@@ -91,8 +91,16 @@ router.get("/listarCategoria", (req, res) =>{
 
     router.delete("/post", (req, res) =>{
     
-        res.send(' <h3>Teste get</h3>');
+        }).catch(
+            (erro)=>{
+                        return res.status(400).json({
+                            erroStatus: true,
+                            erroMessagem: ' erro ao tentar deletar a categoria',
+                            erroBancoDados: erro
+                        });
+            }
+        );
     
-    })
+    });
 
     module.exports = router;
