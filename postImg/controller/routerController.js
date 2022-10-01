@@ -54,65 +54,36 @@ router.get("/listarCategoria", (req, res) =>{
 
     
     
-    router.post("/inserirCategoria", (req, res) =>{
-    
-        let {cod_categoria, nomeCategoria} = req.body;
+    router.put('/alterarCategoria', (req, res)=>{
 
-        categoria.create(
-            {nomeCategoria}
-        ).then(
-            ()=>{
-                    return res.status(201).json({
-                        erroStatus: false,
-                        menssagemStatus: 'Categoria foi inserida'
-                });
-            }
-        ).catch(
+       
+        let {cod_categoria, nomeCategoria} = req.body;
+    
+        //ALTERANDO OS DADOS:
+        categoria.update(
+            {nomeCategoria},
+            {where:{cod_categoria}}
+        ).then( ()=>{
+    
+            return res.status(200).json({
+                erroStatus: false,
+                menssagemStatus: 'Categoria alterada com sucesso!'
+            });
+    
+        }).catch(
             (erro)=>{
                         return res.status(400).json({
                             erroStatus: true,
-                            erroMessagem: 'Houve um erro a tentar colocar a categoria',
+                            erroMessagem: ' erro ao alterar a categoria',
                             erroBancoDados: erro
                         });
             }
         );
     
-    
     });
+    
 
-    router.put("/alterarCategoria", (req, res) =>{
-
-
-        
-  
-
-    //RECEBENDO OS DADOS:
-    let {id, nome_categoria} = req.body;
-
-    //ALTERANDO OS DADOS:
-    modelCategoria.update(
-        {nome_categoria},
-        {where:{id}}
-    ).then( ()=>{
-
-        return res.status(200).json({
-            erroStatus: false,
-            menssagemStatus: 'Categoria alterada com sucesso!'
-        });
-
-    }).catch(
-        (erro)=>{
-                    return res.status(400).json({
-                        erroStatus: true,
-                        erroMessagem: 'Houve um erro ao alterar a categoria',
-                        erroBancoDados: erro
-                    });
-        }
-    )
-     
-
-});
-
+    
 
 
     
