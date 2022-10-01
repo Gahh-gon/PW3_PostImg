@@ -88,8 +88,19 @@ router.get("/listarCategoria", (req, res) =>{
 
     
        
+ router.delete('/deletarCategoria/:cod_categoria', (req, res)=>{
 
-    router.delete("/post", (req, res) =>{
+    
+        let {cod_categoria} = req.params;
+    
+        categoria.destroy(
+            {where: {cod_categoria}}
+        ).then( ()=>{
+    
+            return res.status(200).json({
+                erroStatus: false,
+                menssagemStatus: 'Categoria deletada com sucesso!'
+            });
     
         }).catch(
             (erro)=>{
@@ -102,5 +113,4 @@ router.get("/listarCategoria", (req, res) =>{
         );
     
     });
-
     module.exports = router;
