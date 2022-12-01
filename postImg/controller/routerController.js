@@ -20,13 +20,10 @@ router.get("/listarCategoria", (req, res) =>{
                 });
             }
         );
-    
-    
     });
 
 
 
-   
     router.get('/listarCategoria/:cod_categoria',(req, res)=>{
 
         let {cod_categoria} = req.params;
@@ -45,18 +42,36 @@ router.get("/listarCategoria", (req, res) =>{
                     });
                 }
             );
+    });
     
+
+    router.post('/inserirCategoria', (req, res)=>{
+        let { nomeCategoria} = req.body;
+     
+        categoria.create(
+            { nomeCategoria}
+        ).then(
+            ()=>{
+                    return res.status(201).json({
+                        erroStatus: false,
+                        menssagemStatus: 'Categoria inserida com sucesso!'
+                });
+            }
+        ).catch(
+            (erro)=>{
+                        return res.status(400).json({
+                            erroStatus: true,
+                            erroMessagem: 'Houve um erro ao cadastrar a categoria',
+                            erroBancoDados: erro
+                        });
+            }
+        );
     });
     
 
 
-
-
-    
-    
     router.put('/alterarCategoria', (req, res)=>{
 
-       
         let {cod_categoria, nomeCategoria} = req.body;
     
         //ALTERANDO OS DADOS:
@@ -79,18 +94,12 @@ router.get("/listarCategoria", (req, res) =>{
                         });
             }
         );
-    
     });
     
 
-    
 
 
-    
-       
  router.delete('/deletarCategoria/:cod_categoria', (req, res)=>{
-
-    
         let {cod_categoria} = req.params;
     
         categoria.destroy(
@@ -111,6 +120,5 @@ router.get("/listarCategoria", (req, res) =>{
                         });
             }
         );
-    
     });
     module.exports = router;
