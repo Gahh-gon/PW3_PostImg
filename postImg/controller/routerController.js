@@ -54,6 +54,7 @@ router.get("/listarCategoria", (req, res) =>{
 
 
     router.post('/inserirCategoria', (req, res)=>{
+
         let { nomeCategoria} = req.body;
      
         categoria.create(
@@ -95,10 +96,10 @@ router.get("/listarCategoria", (req, res) =>{
     
         }).catch(
             (erro)=>{
-                        return res.status(400).json({
-                            erroStatus: true,
-                            erroMessagem: ' erro ao alterar a categoria',
-                            erroBancoDados: erro
+                return res.status(400).json({
+                    erroStatus: true,
+                    erroMessagem: 'Houve um erro ao excluir a categoria',
+                    erroBancoDados: erro
                         });
             }
         );
@@ -116,9 +117,10 @@ router.get("/listarCategoria", (req, res) =>{
         ).then( ()=>{
     
             return res.status(200).json({
-                erroStatus: false,
-                menssagemStatus: 'Categoria deletada com sucesso!'
-            });
+           erroStatus: false,
+           menssagemStatus: 'Categoria alterada com sucesso!'
+        });
+
     
         }).catch(
             (erro)=>{
