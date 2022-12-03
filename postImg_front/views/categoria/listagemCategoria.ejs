@@ -15,7 +15,7 @@
         </div>
 
         <%
-            categorias.forEach(categoria=>{
+            categoria.forEach(categoria=>{
         %>
 
             <div class="card mt-2">
@@ -24,8 +24,8 @@
                     <%=categoria.nomeCategoria %>
                 </div>
 
-                <a href="/formEdicaoCategorias/<%= categoria.id %>" class="btn btn-success mt-1">EDITAR</a>
-                <a href="/excluirCategorias/<%= categoria.id %>" class="btn btn-danger mt-1">EXCLUIR</a>
+                <a href="/formEdicaoCategorias/<%= categoria.cod_categoria %>" class="btn btn-success mt-1">EDITAR</a>
+                <a href="/excluirCategoria/<%= categoria.cod_categoria %>" class="btn btn-danger mt-1">EXCLUIR</a>
 
             </div>
 

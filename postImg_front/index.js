@@ -27,8 +27,8 @@ app.get('/listagemCategorias', (req, res)=>{
         .then(
             (response)=>{
              
-                let categorias = response.data;
-                res.render('categoria/listagemCategoria',{categorias});
+                let categoria = response.data;
+                res.render('categoria/listagemCategoria',{categoria});
 
         }); 
     });
@@ -70,6 +70,7 @@ app.get('/listagemCategorias', (req, res)=>{
     app.get('/excluirCategoria/:cod_categoria', (req, res)=>{
         // console.log('ROTA DE EXCLUSÃO - ID: ' + req.params.id);
         let {cod_categoria} = req.params;
+        
         const urlExcluirCategoria = `http://localhost:3000/deletarCategoria/${cod_categoria}`;
        
     
@@ -80,8 +81,8 @@ app.get('/listagemCategorias', (req, res)=>{
             
             axios.get(urlListarCategoria)
             .then((response)=>{
-                let categorias = response.data;
-                res.render('categoria/listagemCategoria', {categorias});
+                let categoria = response.data;
+                res.render('categoria/listagemCategoria', {categoria});
             });
         })
     });
