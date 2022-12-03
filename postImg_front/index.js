@@ -1,7 +1,6 @@
 const express = require('express');
-
 const app = express();
-const axios = require('axios').default;
+const axios = require('axios');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -23,38 +22,33 @@ app.get('/listagemCategorias', (req, res)=>{
     
     const urlListagemCategoria = 'http://localhost:3000/listarCategoria';
 
-    /*
-    CHAMADA PELO AXIOS:
-    1 - URL DA ROTA (urlListagemCategoria)
-    2 - CALLBACK DA RESPOSTA DA CHAMADA
-    */
+    
     axios.get(urlListagemCategoria)
         .then(
             (response)=>{
-                // console.log(response.data);
-                // res.send(response.data);
+             
                 let categorias = response.data;
-                res.render('categoria/listagemCategoria', {categorias});
+                res.render('categoria/listagemCategoria',{categorias});
 
         }); 
     });
 
     //ROTA DE LISTAGEM DE EDIÇÃO
-    app.get('/formEdicaoCategorias/:id', (req, res)=>{
+    app.get('/formEdicaoCategorias/:cod_categoria', (req, res)=>{
         
         //RECEBE O ID DE CATEGORIA QUE VAI SER EDITADO
-        let {id} = req.params;
+        let {cod_categoria} = req.params;
         // console.log(id);
 
         //CHAMADA DO AXIOS PARA A API:
-        const urlListagemCategoria = `http://localhost:3000/listarCategoria/${id}`;
+        const urlListagemCategoria = `http://localhost:3000/listarCategoria/${cod_categoria}`;
         
         axios.get(urlListagemCategoria)
         .then(
             (response)=>{
 
                 let categoria = response.data;
-                res.render('categoria/editarCategoria', {categoria});
+                res.render('categoria/editarCategoria',{categoria});
 
             }
         )
@@ -71,6 +65,25 @@ app.get('/listagemCategorias', (req, res)=>{
             res.send('ALTERADO!')
         )
 
+    });
+
+    app.get('/excluirCategoria/:cod_categoria', (req, res)=>{
+        // console.log('ROTA DE EXCLUSÃO - ID: ' + req.params.id);
+        let {cod_categoria} = req.params;
+        const urlExcluirCategoria = `http://localhost:3000/deletarCategoria/${cod_categoria}`;
+       
+    
+        axios.delete(urlExcluirCategoria)
+        .then((response)=>{
+            const urlListarCategoria = 'http://localhost:3000/listarCategoria';
+            
+            
+            axios.get(urlListarCategoria)
+            .then((response)=>{
+                let categorias = response.data;
+                res.render('categoria/listagemCategoria', {categorias});
+            });
+        })
     });
 
 app.listen(3001, ()=>{

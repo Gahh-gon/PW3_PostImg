@@ -16,6 +16,6 @@ const categoria = connection.define(
         },   
            }
 );
- categoria.sync({force:true});
+ //categoria.sync({force:true});
 
   module.exports = categoria;
