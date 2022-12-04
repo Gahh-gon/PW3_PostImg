@@ -1,7 +1,7 @@
 const express = require('express');
 const categoria = require('../model/modelLocal');
 const router = express.Router();
-
+const uploadUser = require('../middlewares/uploadImage');
 
 
 router.get("/listarCategoria", (req, res) =>{
@@ -75,6 +75,29 @@ router.get("/listarCategoria", (req, res) =>{
             }
         );
     });
+
+
+    router.post('/uploadImage', uploadUser.single('image'), async (req, res)=>{
+       
+        categoria.findAll()
+        .then(
+            (categorias)=>{
+                return res.status(200).json(categorias);
+            
+            }
+        ).catch(
+            (erro)=>{
+                return res.status(400).json({
+                    erroStatus: true,
+                    erroMessagem: 'Erro: upload não foi realizado com sucesso!',
+                    erroBancoDados: erro
+                });
+            }
+        );
+        
+    });
+        
+
 
 
 

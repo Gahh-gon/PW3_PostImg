@@ -13,9 +13,13 @@ const categoria = connection.define(
         nomeCategoria:{
             type: Sequelize.STRING,
             allowNull: true
-        },   
+        },
+        img:{
+            type: Sequelize.DataTypes.BLOB('long'),
+            allowNull:true
+        }   
            }
-);
- //categoria.sync({force:true});
+ );
+//  categoria.sync({force:true});
 
   module.exports = categoria;
