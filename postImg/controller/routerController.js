@@ -78,10 +78,11 @@ router.get("/listarCategoria", (req, res) =>{
 
 
     router.post('/uploadImage', uploadUser.single('image'), async (req, res)=>{
-       
+        
         categoria.findAll()
         .then(
             (categorias)=>{
+                console.log(req.file);
                 return res.status(200).json(categorias);
             
             }

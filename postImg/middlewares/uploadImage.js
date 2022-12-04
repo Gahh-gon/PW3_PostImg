@@ -4,10 +4,10 @@ module.exports = (multer({
 
     storage: multer.diskStorage({
         destination: (req, file, cb) =>{
-            cb(null, 'C:\Users\daian\Desktop\postImg\PW3_PostImg\postImg_front\public\upload\users')
+            cb(null, '../postImg_front/public/upload/users');
         },
         filename:(req,file,cb) =>{
-            cb(null, Date.now().toString +" "+ file.originalname)
+            cb(null, Date.now().toString() +" "+ file.originalname);
         }
     }),
     fileFilter:(req, file, cb) =>{
