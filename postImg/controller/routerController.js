@@ -8,8 +8,8 @@ router.get("/listarCategoria", (req, res) =>{
 
     categoria.findAll()
         .then(
-            (categorias)=>{
-                return res.status(200).json(categorias);
+            (categoria)=>{
+                return res.status(200).json(categoria);
             }
         ).catch(
             (erro)=>{
@@ -81,9 +81,9 @@ router.get("/listarCategoria", (req, res) =>{
         
         categoria.findAll()
         .then(
-            (categorias)=>{
+            (categoria)=>{
                 console.log(req.file);
-                return res.status(200).json(categorias);
+                return res.status(200).json(categoria);
             
             }
         ).catch(

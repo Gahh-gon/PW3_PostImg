@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs')  %>
 
-    <title>LISTAGEM DE CATEGORIAS</title>
+    <title>LISTAGEM DE IMAGENS</title>
 
 </head>
 
@@ -11,7 +11,7 @@
         <%- include('../partials/menu.ejs')  %>
 
         <div class="card mt-2">
-            <div class="card-header">LISTAGEM DE CATEGORIAS</div>
+            <div class="card-header">LISTAGEM DE IMAGENS</div>
         </div>
 
         <%
@@ -21,7 +21,8 @@
             <div class="card mt-2">
 
                 <div class="card-body">
-                    <%=categoria.nomeCategoria %>
+                <%=categoria.img %>
+                    
                 </div>
 
                 <a href="/formEdicaoCategorias/<%= categoria.cod_categoria %>" class="btn btn-success mt-1">EDITAR</a>

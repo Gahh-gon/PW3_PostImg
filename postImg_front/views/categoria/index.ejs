@@ -15,17 +15,26 @@
         </div>
 
         <div class="card-body">
-            <form action="http://localhost:3000/inserirCategoria" method="post">
+            <!-- <form action="http://localhost:3000/inserirCategoria" method="post">
                 
                 <label for="">CATEGORIA</label>
                 <input type="text" class="form-control" 
                         name="nomeCategoria" id="nomeCategoria"
-                        placeholder="DIGITE UMA CATEGORIA">        
-                    <%- include('./imgAdd.ejs') %>     
-                <button class="btn btn-success mt-2">CADASTRAR</button>
-            </form>
+                        placeholder="DIGITE UMA CATEGORIA">  
+                        
+                       
+              
+            </form> -->
 
+                 
+            <form action="http://localhost:3000/uploadImage" method="post">
+
+                
+                <label>Imagem:</label>
+                <input type="file" name="img" id="img">
             
+                  <button class="btn btn-success mt-2">CADASTRAR</button>
+            </form>
             
         </div>
     </div>
