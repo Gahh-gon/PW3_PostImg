@@ -79,27 +79,19 @@ router.get("/listarCategoria", (req, res) =>{
 
     router.post('/uploadImage', uploadUser.single('image'), async (req, res)=>{
         
-        categoria.findAll()
-        .then(
-            (categoria)=>{
-                console.log(req.file);
-                return res.status(200).json(categoria);
-            
-            }
-        ).catch(
-            (erro)=>{
-                return res.status(400).json({
-                    erroStatus: true,
-                    erroMessagem: 'Erro: upload não foi realizado com sucesso!',
-                    erroBancoDados: erro
-                });
-            }
-        );
-        
+       if(req.file){
+        console.log(req.file);
+        return res.json({
+            erro: false,
+            mensagem: "upload realizado com sucesso"
+        });
+       }
+       
+       return res.status(400).json({
+        erro: true,
+        mensagem: "Erro upload não realizado"
+       })
     });
-        
-
-
 
 
     router.put('/alterarCategoria', (req, res)=>{

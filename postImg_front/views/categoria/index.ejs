@@ -1,41 +1,40 @@
+
 <%- include('../partials/header.ejs')  %>
 
-<title>CADASTRO DE CATEGORIAS</title>
+<title>CADASTRO DE IMAGENS</title>
 
 </head>
 
 <body>
     
-    <div class="container">
+    <div class="container ">
 
         <%- include('../partials/menu.ejs') %>
 
-        <div class="card mt-2">
-            <div class="card-header">CADASTRO DE CATEGORIAS</div>
+        <div class="card mt-2 ">
+            <div class="card-header text-center">CADASTRO DE IMAGENS</div>
         </div>
 
-        <div class="card-body">
-            <!-- <form action="http://localhost:3000/inserirCategoria" method="post">
+        <div class="card-body bg-light">
+            <form action="http://localhost:3000/inserirCategoria" method="post">
                 
                 <label for="">CATEGORIA</label>
                 <input type="text" class="form-control" 
                         name="nomeCategoria" id="nomeCategoria"
                         placeholder="DIGITE UMA CATEGORIA">  
-                        
+                        <button class="btn btn-success mt-2">CADASTRAR</button>
                        
               
-            </form> -->
+            </form>
 
-                 
+<!--                  
             <form action="http://localhost:3000/uploadImage" method="post">
-
-                
+    
                 <label>Imagem:</label>
                 <input type="file" name="img" id="img">
-            
                   <button class="btn btn-success mt-2">CADASTRAR</button>
             </form>
-            
+             -->
         </div>
     </div>
 
